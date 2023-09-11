@@ -10,10 +10,10 @@ namespace ApiPeliculas.Filtros
         public void OnActionExecuted(ActionExecutedContext context)
         {
             var casteoResult = context.Result as IStatusCodeActionResult;
-            if (casteoResult == null) return;
-
-            var codigoStatus = casteoResult.StatusCode;
-            if (codigoStatus == 400)
+            if (casteoResult != null)
+                return;
+            var codigoEstatus = casteoResult.StatusCode;
+            if (codigoEstatus == 400)
             {
                 var respuesta = new List<string>();
                 var resultadoActual = context.Result as BadRequestObjectResult;
@@ -37,7 +37,7 @@ namespace ApiPeliculas.Filtros
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            
+          
         }
     }
 }
